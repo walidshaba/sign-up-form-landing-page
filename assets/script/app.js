@@ -15,46 +15,8 @@ const mailLink = document.querySelector('.mailto');
 // const errorIcon = document.querySelectorAll('input');
 
 function validation(e) {
-  // e.preventDefault();
   let regx = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9]+)[.]([a-z]{2,4})$/;
 
-  if (firstName.value == '') {
-    firstName.classList.add('active');
-    errorMessage1.classList.add('active');
-    firstName.placeholder = '';
-    e.preventDefault();
-  } else {
-    firstName.classList.remove('active');
-    errorMessage1.classList.remove('active');
-  }
-  if (lastName.value == '') {
-    lastName.classList.add('active');
-    errorMessage2.classList.add('active');
-    lastName.placeholder = '';
-    e.preventDefault();
-  } else {
-    lastName.classList.remove('active');
-    errorMessage2.classList.remove('active');
-  }
-  if (regx.test(email.value)) {
-    email.classList.remove('active');
-    errorMessage3.classList.remove('active');
-    mailLink.innerHTML = email.value;
-  } else {
-    email.classList.add('active');
-    errorMessage3.classList.add('active');
-    email.placeholder = 'email@example/com';
-    e.preventDefault();
-  }
-  if (password.value == '') {
-    password.classList.add('active');
-    errorMessage4.classList.add('active');
-    password.placeholder = '';
-    e.preventDefault();
-  } else {
-    password.classList.remove('active');
-    errorMessage4.classList.remove('active');
-  }
   if (
     !firstName.value == '' &&
     !lastName.value == '' &&
@@ -64,13 +26,51 @@ function validation(e) {
     e.preventDefault();
     shadowBox.classList.add('active');
     thanksBox.classList.add('active');
+  } else {
+    if (firstName.value == '') {
+      firstName.classList.add('active');
+      errorMessage1.classList.add('active');
+      firstName.placeholder = '';
+      e.preventDefault();
+    } else {
+      firstName.classList.remove('active');
+      errorMessage1.classList.remove('active');
+    }
+    if (lastName.value == '') {
+      lastName.classList.add('active');
+      errorMessage2.classList.add('active');
+      lastName.placeholder = '';
+      e.preventDefault();
+    } else {
+      lastName.classList.remove('active');
+      errorMessage2.classList.remove('active');
+    }
+    if (regx.test(email.value)) {
+      email.classList.remove('active');
+      errorMessage3.classList.remove('active');
+      mailLink.innerHTML = email.value;
+    } else {
+      email.classList.add('active');
+      errorMessage3.classList.add('active');
+      email.placeholder = 'email@example/com';
+      e.preventDefault();
+    }
+    if (password.value == '') {
+      password.classList.add('active');
+      errorMessage4.classList.add('active');
+      password.placeholder = '';
+      e.preventDefault();
+    } else {
+      password.classList.remove('active');
+      errorMessage4.classList.remove('active');
+    }
   }
 }
+
+form.addEventListener('submit', validation);
 
 function returnToPage() {
   document.getElementById('form').reset();
   shadowBox.classList.remove('active');
   thanksBox.classList.remove('active');
 }
-
-form.addEventListener('submit', validation);
